@@ -1,0 +1,82 @@
+h2. Upgrade: From 0.5 to 0.6
+
+Starting with Chicago Boss 0.6, projects follow an OTP layout, and the admin interface is a standalone OTP application.
+
+To upgrade, you will need to do the following in your project:
+
+<pre><code>
+    mkdir src
+    mkdir priv
+    mv controller/ init/ lib/ mail/ model/ test/ view/ src/
+    mv lang/ static/ priv/
+    PROJECT=my_application mv boss.routes priv/$PROJECT.routes
+</code></pre>
+
+In addition, you will need to prefix your controller modules with the application name. E.g.
+
+<pre><code>
+    mv blog_controller.erl my_application_blog_controller.erl
+</code></pre>
+
+This avoids module naming conflicts when multiple applications are installed on the same server (which was not possible prior to 0.6).
+
+
+h2. Upgrade the framework: Chicago Boss 0.5 and later
+
+Starting with Chicago Boss 0.5, your project is kept separate from the Chicago Boss source code. The project files "start.sh" and "start-dev.sh" contain references to the CB ebin/ directory. After downloading a new version of CB, simply type "make" to build it, and then update your "start.sh" and "start-dev.sh" files according to point to the new CB version, if it's in a new directory.
+
+However, the /admin interface is considered part of your project (this will probably change in the future). If you want to take advantage of new features in the /admin interface, you need to replace your project's "admin" directory with the "skel/admin" directory from the CB source.
+
+h2. Upgrade the framework: Chicago Boss 0.4 to 0.5
+
+The easiest way to upgrade to 0.5 is to create a new project and copy your project code over. In the ChicagoBoss-0.5.x directory, type
+
+<pre><code>
+make
+make app PROJECT=mynewproject
+cd ../mynewproject
+</code></pre>
+
+The new project structure should look like this:
+
+<pre><code>
+emiller blackstone ~/src/mynewproject $ ls -l
+total 208
+-rw-r--r--  Makefile
+drwxr-xr-x  admin
+-rw-r--r--  boss.config
+drwxr-xr-x  controller
+drwxr-xr-x  ebin
+drwxr-xr-x  lang
+drwxr-xr-x  lib
+drwxr-xr-x  log
+drwxr-xr-x  mail
+drwxr-xr-x  model
+-rwxr-xr-x  start-dev.sh
+-rw-r--r--  start-server.bat
+-rwxr-xr-x  start.sh
+drwxr-xr-x  static
+drwxr-xr-x  test
+drwxr-xr-x  view
+</code></pre>
+
+You are now ready to copy over your old project files. Because the only project files that matter begin with lower-case letters, this is as simple as:
+
+<pre><code>
+cp -a /path/to/old/ChicagoBoss/[a-z]* /path/to/new/mynewproject
+</code></pre>
+
+You should now be ready to go. Type "./start-dev.sh" in the new project directory and test out your server!
+
+h2. Hot-upgrades in production
+
+Chicago Boss 0.5 features hot-upgrades of framework and project code in production. To upgrade your project code:
+
+1. Type "make" in your project directory to compile your project
+2. Copy the ebin/*.beam files over to the project ebin/ directory of your production server
+3. Visit /admin/upgrade on the production server
+4. Click the button that says "Upgrade BEAM Code"
+
+!http://www.evanmiller.org/chicagoboss-upgrade.png!
+
+That's it, you're done. There should be no downtime or lost requests of any kind.
