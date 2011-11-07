@@ -1,0 +1,146 @@
+h1. The Best of Both Worlds
+
+*Chicago Boss* is an open-source web framework inspired by "Rails":http://rubyonrails.org/ and written in "Erlang":http://www.erlang.org/. The [[Project Goals|goals of the project]] are to bring modern web development techniques to the Erlang community, and to bring Erlang's advanced server technologies to everyday web developers. First released in 2009, Chicago Boss is currently at version 0.6.4 (released November 6th, 2011 &mdash; "Download":http://chicagoboss.org/projects/chicagoboss/files, "Source":http://github.com/evanmiller/ChicagoBoss). CB is being used in production on a number of websites, but still needs some work before 1.0 (see the [[Roadmap]]).
+
+<div style="width: 50%; float: left;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">High Productivity</div>
+
+Compact "query syntax":/embedded/chicagoboss/api-db.html:
+<code class="erlang">
+boss_db:find(person, [age > 25])
+</code>
+
+Elegant "controllers":/embedded/chicagoboss/api-controller.html:
+
+bc. edit('GET', []) ->
+   ok;
+edit('POST', []) ->
+   {redirect, "/somewhere"}.
+
+Simple "data models":/embedded/chicagoboss/api-record.html:
+
+bc. -module(person, [Id, FirstName, LastName]).
+full_name() ->
+    FirstName ++ " " ++ LastName.
+
+
+Rails-y "records":/embedded/chicagoboss/api-record.html#instance:
+
+bc. Person = person:new(id, "Joe", "Blow"),
+Person:save()
+
+Django "templates":/embedded/chicagoboss/api-view.html:
+
+bc. {% for person in people %}
+ - {{ person.full_name }}
+{% endfor %}
+
+See also:
+* "Chicago Boss API docs":/embedded/chicagoboss
+* [[Ruby on Rails Versus Chicago Boss]] 
+* [[Comparison of Erlang Web Frameworks]]
+
+</div>
+
+<div style="width: 50%; float: left;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">High Reliability</div>
+
+h3. 100% asynchronous network I/O
+* Under load, uses less RAM than synchronous apps (PHP, Rails, Django)
+* Comet long-polls won't block the app server
+* Single-process model keeps CPU context switches to a minimum
+
+h3. Supports both SQL and schema-less databases
+* MySQL
+* PostgreSQL
+* MongoDB
+* Riak (*NEW*)
+* Tokyo Tyrant
+* Mnesia
+* Or [[DB Adapter Quickstart|write your own adapter]] -- usually ~300 lines of code
+
+h3. Operational simplicity
+* Zero downtime code upgrades in production (*NEW*)
+* Standalone server does not require Apache, Nginx, etc.
+* Direct SMTP mail delivery does not require Postfix
+
+h3. Unique "testing framework":/embedded/chicagoboss/api-test.html
+* Closure-based tests reduce test code size
+* Run functional tests in-memory -- no network I/O
+* Integrated web and email testing
+
+h3. Future plans (_not yet implemented!_)
+* Full OTP compliance
+* Full test coverage
+* See the [[Roadmap]]
+</div>
+
+<div style="width: 50%; float: left; clear: both;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">Easy Comet - New in 0.4.5</div>
+"BossMQ":/embedded/chicagoboss/api-mq.html introduces a simple API for sending and receiving messages. Here is a complete long-polling chat backend:
+
+bc. send_chat('POST', [Channel]) ->
+  boss_mq:push(Channel, Req:post_param("msg")).
+receive_chat('GET', [Channel]) ->
+  {ok, Time, Messages} = boss_mq:pull(Channel),
+  {json, [{time, Time}, {messages, Messages}]}.
+
+
+With BossMQ, any controller action is a potential Comet endpoint. Thus, Comet endpoints have complete access to your entire application -- databases, templates, the whole stack.
+
+See the screencast! "Comet Chat In 6 Lines Of Erlang Code":http://vimeo.com/20455877
+</div>
+
+<div style="width: 50%; float: left;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">Why Erlang?</div>
+<div style="padding-left: 12px;">Erlang is the only language where you can write "asynchronous network code":http://www.kegel.com/c10k.html without cluttering your code with callbacks.
+
+Erlang's closures make it easy to write "trees of tests":http://www.evanmiller.org/functional-tests-as-a-tree-of-continuations.html.
+
+Erlang has outstanding "compiler tools":http://www.evanmiller.org/write-a-template-compiler-for-erlang.html. We used them to compile templates, generate code, and implement our own query language.
+
+Erlang has "excellent performance":http://blog.mysyncpad.com/post/2073441622/node-js-vs-erlang-syncpads-experience.
+
+Erlang has an "active community":http://www.erlang.org/cgi-bin/ezmlm-cgi?4:ddp:0:201102 and is "always improving":http://www.erlang.org/eeps/.
+
+"Erlang is fun!":http://www.evanmiller.org/joy-of-erlang.html
+</div>
+
+</div>
+
+<div style="width: 50%; float: left; clear: both;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">Testimonials</div>
+??"I tried two other Erlang MVC frameworks before CB and neither came close to CB in terms of ease of use or power/flexibility." --Graeme D.??
+
+??"Neat framework -- maybe the first MVC that's ever clicked for me (I come from the land of .Net and have recently fallen in love with Erlang)." --Jeff Z.??
+
+??"I'm half way through your tutorial, and I have to say it's making my day (both clarity and tone), esp. after despairing whether I could get any Erlang-based web framework to work. Very nicely done. :-)" --Charles B.??
+</div>
+
+<div style="width: 50%; float: left;">
+<div style="font-size: 24px; font-weight: bold; padding: 6px; text-align: center">Powered By Boss</div>
+<div style="padding-left: 12px;">"Paris on Demand":http://www.paris-on-demand.com/ - Travel agency
+
+"Tractis":http://www.tractis.com/home - Online contracts (Spanish)
+
+More coming soon...
+</div>
+</div>
+
+
+
+h2. Table of Contents
+
+h3. Develop
+* [[Installation]]
+* [[Configuration]]
+* [[Admin Interface]]
+* [[Upgrades]]
+* [API](http://chicagoboss.org/embedded/chicagoboss/api.html)
+
+
+h3. Deploy
+* [[Deploy]]
+
+h3. Community
+* [Mailing List](http://groups.google.com/group/chicagoboss)
