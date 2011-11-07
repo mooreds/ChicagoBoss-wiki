@@ -1,0 +1,57 @@
+This page describes how to completely internationalize and localize a Chicago Boss app in just a few minutes.
+
+_Introduction._ I18n is something most people avoid, and for good reason: to get even basic i18n, you've traditionally needed to to hire translators, rewrite large amounts of the code base, and muck around with PO- and MO-files. But Chicago Boss makes I18n nice and simple. If you don't mind quick-and-dirty translations from Google Translate for a first pass, you won't even need translators.
+
+_Step 1._ The first and hardest step is to _internationalize_ your templates by putting strings you want to translate into a special @trans@ tag, e.g.:
+
+<code class="html_django">
+{% trans "Welcome!" %}
+</code>
+
+If you have code that displays validation errors returned from "BossRecord:save()":/embedded/chicagoboss/api-record.html#save, you should put those in @trans@ tags, too, e.g.:
+
+<pre><code class="html_django">
+<ol>
+{% for error in validation_errors %}
+<li>{% trans error %}
+{% endfor %}
+</ol>
+</code></pre>
+
+_Step 2._ Now we need to create a language file. Visit /admin/lang on your development server. You should see a page like this:
+
+!http://www.chicagoboss.org/images/translator-new.jpg!
+
+_Step 3._ Click "New language file"
+
+!http://www.chicagoboss.org/images/translator-create.jpg!
+
+_Step 4._ Choose a language for which you want to have a translation, and click "Create language file".
+
+_Step 5._ You should a page with a lot of messages pulled from your app's templates, as well as all the error messages returned by the @validation_errors()@ function of your data models. (You'll see messages taken from the /admin interface itself, too.)
+
+!http://www.chicagoboss.org/images/translator-untrans.jpg!
+
+_Step 6._ Fill out the form yourself, or cheat and click "Fill in the blanks with Google!"
+
+!http://www.chicagoboss.org/images/translator-untrans-filled.jpg!
+
+_Step 7._ Click "Submit translations"
+
+_Step 8._ You should see all of your translations for the language you chose.
+
+!http://www.chicagoboss.org/images/translator-trans.jpg!
+
+...and that's it! Visitors to your site who specify this language in their browsers will automatically see these messages instead of the original ones.
+
+You can find the files used for translations in the lang/ directory in your project directory. They're just PO-files, so if your PO-foo is strong you can edit them directly.
+
+What if you want to override the language specified in a user's browser settings? Not a problem. You just need to return a "Content-Language" HTTP header from your controller, like so:
+
+<code class="erlang">
+{ok, [], [{"Content-Language", "fr"}]}. 
+</code>
+
+That code would ensure that the French language strings are used (assuming you created a language file for @fr@).
+
+See also: [[How Chicago Boss Chooses Which Language To Serve]]
