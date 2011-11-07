@@ -1,6 +1,5 @@
 ## Table of Contents
-
-* [[API]]
+* [API](http://chicagoboss.org/embedded/chicagoboss/api.html)
 * [[Admin Interface]]
 * [[Configuration]]
 
