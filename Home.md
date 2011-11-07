@@ -1,11 +1,12 @@
 ## Table of Contents
-* [[Admin Interface]]
-* [[Configuration]]
 
 ### Develop
 * [[Installation]]
+* [[Configuration]]
+* [[Admin Interface]]
 * [[Upgrades]]
 * [API](http://chicagoboss.org/embedded/chicagoboss/api.html)
+
 
 ### Deploy
 * [[Deploy]]
