@@ -17,7 +17,7 @@ Install "Erlang R13A or later":http://www.erlang.org/download.html
 
 h2. Download a Chicago Boss Release
 
-"Download a release":http://www.chicagoboss.org/projects/chicagoboss/files
+"Download a release":https://github.com/evanmiller/ChicagoBoss/downloads
 
 h2. Compile It
 
