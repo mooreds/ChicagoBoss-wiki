@@ -1,1 +1,2 @@
-Welcome to the ChicagoBoss wiki!
+# Table of Contents
+* [[Admin Interface]]
