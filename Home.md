@@ -4,5 +4,8 @@
 * [[Admin Interface]]
 * [[Configuration]]
 
+### Develop
+* [[Installation]]
+
 ### Deploy
 * [[Deploy]]
