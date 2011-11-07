@@ -1,0 +1,48 @@
+Here's the code necessary to write a very simple CB app. Let's suppose we have a database of library books, and want to write an application for viewing them.
+
+First, we create a new Chicago Boss project. Under the Chicago Boss directory:
+
+<pre><code class="sh">
+$ make app PROJECT=simple
+</code></pre>
+
+This creates the directory <code>simple</code> on the same level as the Chicago Boss installation.
+
+Next we define a <code>library_book</code> model. Under the <code>simple</code> directory:
+
+model/library_book.erl:
+
+<pre><code class="erlang">
+-module(library_book, [Id, Title, AuthorName]).
+-compile(export_all).
+</code></pre>
+
+Next we define a controller for pulling records from the database. We prefix the filename of our controller with the name of our project.
+
+controller/simple_library_book_controller.erl:
+
+<pre><code class="erlang">
+-module(simple_library_book_controller, [Req]).
+-compile(export_all).
+
+list('GET', []) ->
+    LibraryBooks = boss_db:find(library_book, []),
+    {ok, [{books, LibraryBooks}]}.
+</code></pre>
+
+Finally we make a template file that puts all of the data into a pretty table.
+
+view/library_book/list.html:
+
+<pre><code class="html_django">
+<table>
+<tr><td>Title</td><td>Author</td></tr>
+{% for book in books %}
+<tr><td>{{ book.title }}</td>
+    <td>{{ book.author_name }}</td>
+</tr>
+{% endfor %}
+</table>
+</code></pre>
+
+And that's it! Visiting http://localhost:8001/library_book/list will show us all the library books in the database.
