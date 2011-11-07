@@ -4,7 +4,7 @@
 
 <p><em>DRAFT: September 7, 2010</em> (<a href="#changes">changes</a>)</p>
 
-<p><strong>NOTE: The following tutorial is out of date. Please contact me if you are interested in making a new tutorial for the 0.6.x series.</strong></p>
+<p><strong>11/5/2011 NOTE: The following tutorial is out of date. Please contact me if you are interested in making a new tutorial for the 0.6.x series. -EMM</strong></p>
 
 <h2>Part I. Introduction</h2>
 
