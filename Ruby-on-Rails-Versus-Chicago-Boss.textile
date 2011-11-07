@@ -1,0 +1,73 @@
+h1. Ruby on Rails Versus Chicago Boss
+
+The Chicago Boss "API":/embedded/chicagoboss/index.html was largely inspired by Rails. The following tables should give you a feel for some of the similarities and differences.
+
+
+h2. Model
+
+|_.RUBY ON RAILS|_.CHICAGO BOSS|
+|<pre><code class="ruby">Person.new(:name => "Joe", :age => 4)</code></pre>|<pre><code class="erlang">person:new(id, "Joe", 4)</code></pre>|
+|<pre><code class="ruby">@person.save</code></pre>                         |<pre><code class="erlang">Person:save()</code></pre>|
+|<pre><code class="ruby">@person.valid?</code></pre>                       |<pre><code class="erlang">Person:validate()</code></pre>|
+|<pre><code class="ruby">@person.last_name</code></pre>                    |<pre><code class="erlang">Person:last_name()</code></pre>|
+|<pre><code class="ruby">@person.attribute_names</code></pre>              |<pre><code class="erlang">Person:attribute_names()</code></pre>|
+|<pre><code class="ruby">@person.attributes</code></pre>                   |<pre><code class="erlang">Person:attributes()</code></pre>|
+
+h2. Associations
+
+|_.RUBY ON RAILS|_.CHICAGO BOSS|
+|<pre><code class="ruby">belongs_to :manager</code></pre>|<pre><code class="erlang">-belongs_to(manager).</code></pre>|
+|<pre><code class="ruby">has_one :partner</code></pre>   |<pre><code class="erlang">-has({partner, 1}).</code></pre>|
+|<pre><code class="ruby">has_many :pets</code></pre>     |<pre><code class="erlang">-has({pets, many}).</code></pre>|
+|<pre><code class="ruby">has_many :pets, :foreign_key => "animal_id"</code></pre>|<pre><code class="erlang">-has({pets, many, [{foreign_key, animal_id}]}).</code></pre>|
+|<pre><code class="ruby">has_many :pets, :class_name => "Animal"</code></pre>    |<pre><code class="erlang">-has({pets, many, [{module, animal}]}).</code></pre>|
+|<pre><code class="ruby">has_many :pets, :order => "name ASC"</code></pre>       |<pre><code class="erlang">-has({pets, many, [{sort_by, name}, 
+  {sort_order, str_ascending}]}).</code></pre>|
+
+h2. Database
+
+|_.RUBY ON RAILS|_.CHICAGO BOSS|
+|<pre><code class="ruby">Person.find(:all)</code></pre>               |<pre><code class="erlang">boss_db:find(person, [])</code></pre>|
+|<pre><code class="ruby">Person.find(42)</code></pre>                 |<pre><code class="erlang">boss_db:find("person-42")</code></pre>|
+|<pre><code class="ruby">Person.where("admin = 1")</code></pre>       |<pre><code class="erlang">boss_db:find(person, [admin = 1])</code></pre>|
+|<pre><code class="ruby">Person.offset(100).limit(10).all</code></pre>|<pre><code class="erlang">boss_db:find(person, [], 100, 10)</code></pre>|
+
+h2. View
+
+|_.RUBY ON RAILS|_.CHICAGO BOSS|
+|<pre><code class="html_rails"><%= @person.name %></code></pre>|<pre><code class="html_django">{{ person.name }}</code></pre>|
+|<pre><code class="html_rails"><% if @person %>
+  <%= @person.name %>
+<% end %></code></pre>|<pre><code class="html_django">{% if person %}
+  {{ person.name }}
+{% endif %}</code></pre>|
+|<pre><code class="html_rails"><% for person in @people %>
+-<%= person.name %>
+<% end %></code></pre>|<pre><code class="html_django">{% for person in people %}
+-{{ person.name }}
+{% endfor %}</code></pre>|
+|<pre><code class="html_rails"><%= render "shared/header", 
+  { :title=> "foo", :user => @person  } %></code></pre>|<pre><code class="html_django">{% header title="foo" user=person %}</code></pre>|
+
+h2. Controller
+
+|_.RUBY ON RAILS|_.CHICAGO BOSS|
+|<pre><code class="ruby">def edit
+  case request.request_method
+  when "GET"
+    ...
+  when "POST"
+    ...
+  end
+end</code></pre>|<pre><code class="erlang">edit('GET', []) ->
+  ...;
+edit('POST', []) ->
+  ....</code></pre>|
+|<pre><code class="ruby">redirect_to :action => 'show', :id => @entry.id</code></pre>|<pre><code class="erlang">{redirect, "/show/"++Entry:id()}</code></pre>|
+|<pre><code class="ruby">render :action => "elsewhere"</code></pre>                  |<pre><code class="erlang">{render_other, "/elsewhere"}</code></pre>|
+|<pre><code class="ruby">render :text => "Hello"</code></pre>                        |<pre><code class="erlang">{output, "Hello"}</code></pre>|
+|<pre><code class="ruby">render :json => { :user => @user }</code></pre>             |<pre><code class="erlang">{json, [{user, User}]}</code></pre>|
+|<pre><code class="ruby">before_filter :require_login, :except => [:show]</code></pre>|<pre><code class="erlang">before_("show") -> ok;
+before_(_) -> require_login().</code></pre>|
+|<pre><code class="ruby">after_filter :cache, :except => [:login]</code></pre>       |<pre><code class="erlang">after_("login", Res) -> Res;
+after_(_, Res) -> cache(Res).</code></pre>|
