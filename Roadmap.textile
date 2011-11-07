@@ -1,0 +1,78 @@
+h1. The Road to 1.0
+
+We hope the next major release of Chicago Boss will be 1.0, targeted for Autumn 2011. This page is an informal description of the 1.0 goals.
+
+h2. Goal 1: Full OTP compliance
+
+*Status*: _Not yet implemented_
+
+Apps written with Chicago Boss should be standalone OTP applications that simply list CB as a dependency. It will then be possible to write "turn-key" applications that end-users can easily download and deploy (e.g. a forum app, a wiki app, etc). In this sense, Chicago Boss should just be seen as a fancy compiler and run-time library for web applications.
+
+h2. Goal 2: News API (data model event notifications)
+
+*Status*: _Implemented as of 0.5.4_
+
+CB 1.0 will support event notifications for data models. That is, it will be easy to write code that sends a notification via email, Comet, or SMS as soon as something of interest in the database changes. Thus it will be simple to implement features like Twitter or Facebook News Feed, or to instantly email a site administrator whenever a new account is created.
+
+The News API will have an external REST API so that other web applications can post model updates to CB and take advantage of Erlang's asynchronous I/O capabilities for delivering event notifications to clients.
+
+The News API will be flexible and integrate tightly with BossMQ. For example, after receiving an event, the application can check to see if a particular user is online. If the user is online, the notification will be delivered to him via Comet; if he is not online, the notification will be delivered via email.
+
+h2. Goal 3: Distributed setups
+
+*Status*: _Implemented in trunk, needs testing_
+
+The following features currently only work on single-node setups:
+
+* ETS sessions
+* In-memory database
+* BossNews
+* BossMQ
+
+Work needs to be done to support these features in multi-node environments. By supporting multi-node environments out of the box, CB apps will have much simpler operational complexity than other frameworks (which might require separate Memcache and RabbitMQ servers that need to be configured). Ideally it will be possible to scale an application up to additional nodes with the click of a button in the admin interface.
+
+h2. Goal 4: Cache system
+
+*Status*: _Implemented in trunk, needs testing_ 
+
+See "Issue #1":/issues/1. Caching is an important part of any scaling strategy, and improves overall application responsiveness. ErlyDTL is fast, so the focus should be on caching the results of database queries rather than caching pages or view fragments. To keep the code simple, BossNews events should be used for expiring out-of-date cache entries. At a minimum we should support an in-memory cache as well as Memcache.
+
+h2. Minor Features for CB 1.0
+
+* Query pre-fetching, see "Issue #4":/issues/4
+* CouchDB database adapter
+* -Memcache session adapter- _Implemented in trunk, needs testing_
+* -Update records via admin interface- _Implemented in 0.5.5_
+* -Bulk import/export of data in the admin interface- _Implemented in 0.5.5_
+
+h1. Chicago Boss 2.0
+
+The following features may be implemented sooner than 2.0 or perhaps never. It's just a collection of ideas for future directions for Chicago Boss.
+
+h2. PDF generation
+
+"ErlGuten":https://github.com/richcarl/NGerlguten is a nifty pure-Erlang project for laying out PDF documents. It needs some work, but combined with ErlyDTL it could be an easy way to generate PDF documents on the server similar to "PrinceXML":http://www.princexml.com/. Possible applications include printing tickets, receipts, transaction histories, bills, and many others.
+
+h2. Web experiments
+
+What sells? A built-in framework for performing experiments would help people build websites that attract interest and retain users. The focus should be on presentation-level experiments: colors, images, headlines, and copy. CB would compute summary statistics and perform basic hypothesis tests, and make multivariate data available for off-line analysis. The syntax could be as simple as
+
+<pre>
+    <h1>{% test "Erlang web MVC + Comet" "Build something big." %}</h1>
+</pre>
+
+The experiments should be closely tied to sessions in order to measure subsequent activity. It would be great to show statistics on all database activity without any configuration, e.g. updates to particular DB fields, creation and deletion of certain types of records, etc. (Of course, configuration would be needed to focus attention on key metrics.)
+
+An admin interface that could generate diff files to close an experiment would be awesome.
+
+h2. Operational dashboard
+
+Chicago Boss can be deployed in an Erlang cluster where every node knows about every other node. It would be great to provide a slick HTML5 operational dashboard that shows timelines of system statistics from each node (and possibly creates custom alerts). Using BossNews, statistics could also be generated for database activity (e.g. incoming orders). The goal would be to replace the existing monitoring stack: collectd, RRDtool, and Cacti.
+
+h2. Fault tolerance
+
+At present, services provided by the master node (message queue, in-memory sessions) will go down if the master node fails. To fulfill the promise of high reliability, redundancy should be provided so that taking out any one node of a CB cluster will not cause any messages or sessions to be lost.
+
+h2. UNIX signal handling
+
+The CB process should act as a regular UNIX daemon that handles UNIX signals. Changes to Erlang core will be required. The signal interface should be similar to Nginx, e.g. SIGHUP reloads config, SIGUSR1 reopens log files, SIGUSR2 upgrades code, etc.
