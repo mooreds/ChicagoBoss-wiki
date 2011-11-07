@@ -1,0 +1,45 @@
+This document describes how to configure and send email from a CB app.
+
+h2. Configuration
+
+For simple applications, there is no need to configure anything. Chicago Boss will attempt to deliver mail directly to the recipient. However, if the recipient's mail server is down, the message might be lost, so you might want to configure a separate SMTP server (such as Postfix).
+
+To specify an SMTP relay, use the @mail_relay@ configuration option, which should be a string with the SMTP server name.
+
+h2. API
+
+The "mail-sending API":/embedded/chicagoboss/api-mail-controller.html is described in the API docs.
+
+h2. Example
+
+This example sends a simple welcome message using a template.
+
+mail/view/test_message.txt:
+
+<pre>
+Hello, {{ name }}! Welcome to the site.
+</pre>
+
+mail/mail_controller.erl:
+
+<pre><code class="erlang">
+test_message(Name, Email) ->
+    Headers = [{"Subject", "Welcome!"}, {"To", Email}, {"From", "site@example.com"}},
+    {ok, "site@example.com", Email, Headers, [{name, Name}]}.
+</code></pre>
+
+With these two files in place, we can now send this message from anywhere in the CB app with the following invocation:
+
+<pre><code class="erlang">
+boss_mail:send(test_message, ["Johhny", "johnny@example.com"])
+</code></pre>
+
+And johnny@example.com will receive:
+
+<pre>
+From: site@example.com
+To: johnny@example.com
+Subject: Welcome!
+
+Hello, Johnny! Welcome to the site.
+</pre>
