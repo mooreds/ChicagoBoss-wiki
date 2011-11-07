@@ -88,4 +88,4 @@ All configuration takes place in <code>boss.config</code> in your project direct
 * **ssl_options** - SSL options; see [ssl(3erl)](http://www.erlang.org/doc/man/ssl.html)
 * [[https_example_setup|HTTPS Example Setup]]
 
-*Warning:* From 0.5.2, the frontpage, default_action and default_actions configuration options has been moved to the [[Routes|new routing system]]
+*Warning:* From 0.5.2, the frontpage, default_action and default_actions configuration options has been moved to the [[new routing system|Routes]]
