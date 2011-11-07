@@ -138,7 +138,7 @@ Execute raw database commands on SQL databases
 Execute a fun inside a transaction.
 
     save_record(RecordBossRecord) -> {ok, SavedBossRecord} | {error, [ErrorMessages]}
-Save (that is, create or update) the given BossRecord in the database. Performs validation first; see validate_record/1.
+Save (that is, create or update) the given BossRecord in the database. Performs validation first; see **validate_record/1**.
 
     validate_record(RecordBossRecord) -> ok | {error, [ErrorMessages]}
 Validate the given BossRecord without saving it in the database. ErrorMessages are generated from the list of tests returned by the BossRecord's **validation_tests/0** function (if defined). The returned list should consist of {TestFunction, ErrorMessage} tuples, where TestFunction is a fun of arity 0 that returns true if the record is valid or false if it is invalid. ErrorMessage should be a (constant) string which will be included in ErrorMessages if the TestFunction returns false on this particular BossRecord.
