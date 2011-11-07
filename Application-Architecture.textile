@@ -1,0 +1,33 @@
+h1. Application Architecture
+
+Chicago Boss apps are structured similar to Ruby on Rails apps. There are four main pieces:
+
+h2. Model
+
+The model is a set of files in src/model/ that describe your database. Model files can contain additional logic, validation functions, and generated fields. Chicago Boss models, called BossRecords, are really parameterized modules with some tacked-on functions for accessing and saving data.
+
+BossRecords support arbitrary associations, so that you can describe complex relationships in your data model and easily access these relationships in your controller or view.
+
+More info: "Model API docs":/embedded/chicagoboss/api-record.html
+
+h2. Controller
+
+Incoming requests are passed to a controller, which are Erlang modules in the src/controller/ directory. The controller is given the request method (GET or POST), and a list of tokens that appear in the URL. The controller has access to a SimpleBridge request object that contains additional information about the request (headers, uploaded files, etc.). The controller is optionally passed data from an authorization phase.
+
+The job of the controller is to return a tuple that tells Boss what to do with the request. If the tuple is {ok, Variables}, Boss will render a corresponding template file with the variables returned by the controller. The controller might also tell Boss to perform a redirect, return JSON, or do something else.
+
+A special "after_" function can be defined in a controller to perform post-processing on the output (for example, compression).
+
+More info: "Controller API docs":/embedded/chicagoboss/api-controller.html
+
+h2. View
+
+Views are rendered with variables returned by a controller. Thus Chicago Boss controllers "push" variables to views; views cannot "pull" data from controllers.
+
+View files are Django Template files that sit in src/view/. They are compiled with ErlyDTL, an Erlang library which implements almost all of the Django Template Language. View files can inherit from other view files, and they can include other view files. These features make it fairly simple to build complex websites with too much repetition of logic.
+
+Apart from server-side JSON generation, Chicago Boss is completely agnostic of JavaScript. It is up to the developer to choose a JavaScript framework that suits his or her needs.
+
+h2. Email
+
+Chicago Boss ships with a mini-framework for [[Sending Email|sending email]]. Mail controller functions live in src/mail/my_application_outgoing_mail_controller.erl, and template files go in src/mail/view/. As with the web framework, controller functions push variables to the templates. The rendered output is then delivered to a specified recipient via SMTP.
