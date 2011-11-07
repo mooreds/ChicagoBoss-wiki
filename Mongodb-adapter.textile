@@ -1,0 +1,13 @@
+h1. MongoDB Adapter
+
+The MongoDB Adapter uses the "mongodb-erlang":https://github.com/TonyGen/mongodb-erlang driver.
+
+It takes two specific options, @db_write_mode@ and @db_read_mode@ which can be used to configure 
+write-mode and read-mode, as described in "mongodb-erlang README file":https://github.com/TonyGen/mongodb-erlang/blob/master/README.md
+By default, write-mode is set to @safe@ and read-mode is set to @master@.
+
+The adapter considers lists of integers and binaries as strings, so passing it values such as @"hello"@ or @<<"hello">>@ will result in a string object being stored in your database. If you actually need to store lists of integers, you will need to wrap them in a tagged tuple such as @{integers, [1,2,3]}@ so that the adapter knows you really want to store a list of integers and not a string. A similar tuple will be returned when reading back from the database. 
+
+Raw queries can be made using @execute/2@ for things like MapReduce.
+
+TODO: add raw queries examples.
