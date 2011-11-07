@@ -7,7 +7,7 @@ Chicago boss ships with their own high performance web server, it does not requi
 The default port is 8001 (see [[Configuration]] on how to change it), if you want to bind your application to the standard port 80 in unix you will need extra work, ports below 1024 can be opened only by root.
 
 A few solutions:
-# Iptables
+## Iptables
 
 You can make these changes survive reboots by adding this line to /etc/rc.local
 <pre>
