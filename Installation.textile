@@ -57,5 +57,5 @@ Next steps:
 * [[Application Architecture]]
 * [[Example Application]]
 * [[Configuration]]
-* "Chicago Boss Tutorial":http://www.evanmiller.org/chicago-boss-guide.html
+* [[An Evening With Chicago Boss]]
 * "Chicago Boss API docs":/embedded/chicagoboss/api.html
