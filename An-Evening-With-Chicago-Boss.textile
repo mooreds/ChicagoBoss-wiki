@@ -4,6 +4,8 @@
 
 <p><em>DRAFT: September 7, 2010</em> (<a href="#changes">changes</a>)</p>
 
+<p><strong>NOTE: The following tutorial is out of date. Please contact me if you are interested in making a new tutorial for the 0.6.x series.</strong></p>
+
 <h2>Part I. Introduction</h2>
 
 <p>I wrote a web framework for Erlang called <a href="http://www.chicagoboss.org/">Chicago Boss</a>. This guide will show you how to use it to write a simple web application, complete with logins and an RSS feed.</p>
