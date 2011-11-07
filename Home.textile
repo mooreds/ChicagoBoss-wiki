@@ -136,11 +136,11 @@ h3. Develop
 * [[Configuration]]
 * [[Admin Interface]]
 * [[Upgrades]]
-* [API](http://chicagoboss.org/embedded/chicagoboss/api.html)
+* API:http://chicagoboss.org/embedded/chicagoboss/api.html
 
 
 h3. Deploy
 * [[Deploy]]
 
 h3. Community
-* [Mailing List](http://groups.google.com/group/chicagoboss)
+* Mailing List:http://groups.google.com/group/chicagoboss
