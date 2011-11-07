@@ -1,0 +1,65 @@
+Want Chicago Boss to support your favorite database? Then write an adapter! This page explains how.
+
+Database adapters should conform to the boss_db_adapter behaviour and need to implement the following nine functions:
+
+<code class="erlang">
+start() -> {ok, Connection | undefined} 
+</code>
+
+Performs any initialization and return a Connection value (if needed).
+
+<code class="erlang">
+stop(Conn) -> ok
+</code>
+
+Performs any tear-downs.
+
+<code class="erlang">
+find(Conn, Id::string()) -> BossRecord | {error, Reason}
+</code>
+
+Returns a BossRecord matching the Id. The Id must be unique across data types.
+
+<code class="erlang">
+find(Conn, Type::atom(), Conditions, Max::integer(), Skip::integer(), Sort::atom(), SortOrder) -> [BossRecord] 
+</code>
+
+Queries for BossRecords. The Conditions are guaranteed to be in {Key, Operator, Value} format. See the BossDB API for a list of query operators you need to support.
+
+<code class="erlang">
+count(Conn, Type::atom(), Conditions) -> ::integer() 
+</code>
+
+Counts the number of BossRecords of type Type matching Conditions.
+
+<code class="erlang">
+counter(Conn, Id::string()) -> ::integer() 
+</code>
+
+Retrieves the value of a counter, or 0 if the counter does not exist.
+
+<code class="erlang">
+incr(Conn, Id::string(), Increment::integer()) -> ::integer() 
+</code>
+
+Increments the value of a counter by Increment, and returns the new value.
+
+<code class="erlang">
+delete(Conn, Id::string()) -> ok | {error, Reason} 
+</code>
+
+Delete the BossRecord with the given Id.
+
+<code class="erlang">
+save_record(Conn, RecordBossRecord) -> {ok, SavedBossRecord} 
+</code>
+
+Saves (that is, creates or updates) the given BossRecord in the database. If the ID is set to 'id', the function must generate an ID that is unique across data types. This function should not perform validation or run save hooks.
+
+When you're finished, just:
+# Put the adapter into SRC/boss/db_adapters
+# Specify the adapter name as the db_adapter in boss.config
+# Add any test configuration to SRC/boss/db_adapters/test_config
+# Add a test_<adapter name> target to the bottom of Makefile
+# Test the adapter by running make test_<adapter name> 
+# Send a note to the Chicago Boss mailing list
