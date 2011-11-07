@@ -1,5 +1,7 @@
 h2. Table of Contents
 
+* [[Roadmap]]
+
 h3. Develop
 * [[Installation]]
 * [[Configuration]]
