@@ -5,6 +5,7 @@
 
 ### Develop
 * [[Installation]]
+* [[Upgrades]]
 
 ### Deploy
 * [[Deploy]]
