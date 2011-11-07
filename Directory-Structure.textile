@@ -1,0 +1,57 @@
+After running this command in ChicagoBoss's main directory
+
+<pre>
+make app PROJECT=rabbit
+</pre>
+
+followed by a 
+<pre>
+cd ../rabbit
+</pre>
+
+you should see something like this:
+<pre>
+CentralStation:rabbit kjanson$ ls -l
+total 48
+-rw-r--r--  1 kjanson  wheel  436 Sep 22 21:54 Makefile
+-rw-r--r--  1 kjanson  wheel  315 Sep 22 21:54 boss.config
+drwxr-xr-x  2 kjanson  wheel   68 Sep 22 21:54 ebin
+drwxr-xr-x  2 kjanson  wheel   68 Sep 22 21:54 include
+drwxr-xr-x  2 kjanson  wheel   68 Sep 22 21:54 log
+drwxr-xr-x  5 kjanson  wheel  170 Sep 22 21:54 priv
+-rw-r--r--  1 kjanson  wheel  230 Sep 22 21:54 rabbit.app.src
+drwxr-xr-x  9 kjanson  wheel  306 Sep 22 21:54 src
+-rwxr-xr-x  1 kjanson  wheel  245 Sep 22 21:54 start-dev.sh
+-rw-r--r--  1 kjanson  wheel   68 Sep 22 21:54 start-server.bat
+-rwxr-xr-x  1 kjanson  wheel  634 Sep 22 21:54 start.sh
+</pre>
+
+This is the new structure without cb_admin.
+
+If you wish to run the admin interface from within this directory structure, you should perform these steps:
+
+Git the latest cb_admin fresh from github
+<pre>
+git clone https://github.com/evanmiller/chicagoboss_admin.git cb_admin
+
+Output will be something like this:
+
+Cloning into cb_admin...
+remote: Counting objects: 188, done.
+remote: Compressing objects: 100% (107/107), done.
+remote: Total 188 (delta 84), reused 176 (delta 72)
+Receiving objects: 100% (188/188), 139.10 KiB | 224 KiB/s, done.
+Resolving deltas: 100% (84/84), done.
+</pre>
+
+After that, compile the cb_admin files by changing into the new cb_admin directory like this:
+<pre>
+cd cb_admin
+make
+cd ../
+</pre>
+
+Don't forget to enable the admin interface in "boss.config":http://chicagoboss.org/projects/chicagoboss/wiki/Configuration!
+
+All done!
+Enjoy!
