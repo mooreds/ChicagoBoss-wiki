@@ -1,19 +1,19 @@
-h1. Admin Interface
-
 An admin interface for ChicagoBoss is available as a separate application.
 
 To install it please follow these steps:
 
- $ git clone https://github.com/evanmiller/chicagoboss_admin.git cb_admin
+<code> $ git clone https://github.com/evanmiller/chicagoboss_admin.git cb_admin </code>
 
-(!) The directory where you checkout the code needs to be called @cb_admin@ and nothing else.
+ _The directory where you checkout the code needs to be called @cb_admin@ and nothing else._
 
- $ cd cb_admin
- $ make
+<pre>
+<code>$ cd cb_admin
+$ make
+</code></pre> 
 
 Then add an entry for the cb_admin application in your project configuration file:
 
-
+<pre><code>
     [{boss, [
         {applications, [cb_admin, ...]},
         ...
@@ -23,4 +23,5 @@ Then add an entry for the cb_admin application in your project configuration fil
         {base_url, "/admin"}
     ]}].
 
+</code></pre>
 You should now be able to point your browser at /admin.
