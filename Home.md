@@ -9,3 +9,6 @@
 
 ### Deploy
 * [[Deploy]]
+
+### Community
+* [Mailing List](http://groups.google.com/group/chicagoboss)
