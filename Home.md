@@ -3,3 +3,6 @@
 * [[API]]
 * [[Admin Interface]]
 * [[Configuration]]
+
+### Deploy
+* [[Deploy]]
