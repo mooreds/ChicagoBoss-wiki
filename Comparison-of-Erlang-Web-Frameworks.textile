@@ -1,0 +1,72 @@
+h1. Comparison of Erlang Web Frameworks
+
+h2. Features
+
+||_."BeepBeep":http://github.com/davebryson/beepbeep|_.Chicago Boss|_."Erlang Web":http://www.erlang-web.org/|_."ErlyWeb":http://www.erlyweb.org/|_.    "Nitrogen":http://nitrogenproject.com/|_."Zotonic":http://zotonic.com/|
+|\7.ARCHITECTURE|
+|Event-driven           |-|y|-|-|y|y|
+|Data model             |-|y|y|y|-|y|
+|View/Controller (web)  |y|y|y|y|y|y|
+|View/Controller (email)|-|y|-|-|-|y|
+|\7.DEVELOPMENT|
+|Admin interface        |-|y|-|-|-|y|
+|Automatic recompile    |-|y|-|y|-|-|
+|Framework for
+functional tests        |-|y|-|-|-|-|
+|\7.PRODUCTION|
+|Error logging          |-|y|y|y|y|y|
+|Hot code upgrades      |-|y|-|-|y|y|
+
+h2. More Features
+
+||_."BeepBeep":http://github.com/davebryson/beepbeep|_.Chicago Boss|_."Erlang Web":http://www.erlang-web.org/|_."ErlyWeb":http://www.erlyweb.org/|_.    "Nitrogen":http://nitrogenproject.com/|_."Zotonic":http://zotonic.com/|
+|\7.DATA MODEL|
+|Code generation    |n/a|y|-|y|n/a|-|
+|Data validation    |n/a|y|y|y|n/a|y|
+|EDoc generation    |n/a|y|-|-|n/a|y|
+|\7.I18N/L10N|
+|Template localization|-|y|y|-|-|y|
+|UTF-8 in Erlang code |-|y|-|-|-|-|
+|\7.JAVASCRIPT|
+|JSON generation      |-|y|-|-|y|y|
+|Built-in Comet       |-|y|-|-|y|y|
+|JS form validation   |-|-|-|-|y|y|
+
+h2. Technologies
+
+||_."BeepBeep":http://github.com/davebryson/beepbeep|_.Chicago Boss|_."Erlang Web":http://www.erlang-web.org/|_."ErlyWeb":http://www.erlyweb.org/|_.    "Nitrogen":http://nitrogenproject.com/|_."Zotonic":http://zotonic.com/|
+|\7.DATABASES|
+|"CouchDB":http://couchdb.apache.org/                |n/a|-|y|-|n/a|-|
+|"Mnesia":http://en.wikipedia.org/wiki/Mnesia        |n/a|y|y|y|n/a|-|
+|"MongoDB":http://www.mongodb.org/                   |n/a|y|-|-|n/a|-|
+|"MySQL":http://en.wikipedia.org/wiki/MySQL          |n/a|y|-|y|n/a|-|
+|"PostgreSQL":http://en.wikipedia.org/wiki/PostgreSQL|n/a|y|-|y|n/a|y|
+|"Riak":http://wiki.basho.com/                       |n/a|y|-|-|n/a|-|
+|"Tokyo Tyrant":http://1978th.net/tokyotyrant/       |n/a|y|-|-|n/a|-|
+|\7.TEMPLATES|
+|"ErlyDTL":http://code.google.com/p/erlydtl/         |y|y|y|-|-|y|
+|"ErlTL":http://erlyweb.org/doc/erltl.html           |-|-|-|y|-|-|
+|"WPart":http://wiki.erlang-web.org/WPartTemplates   |-|-|y|-|-|-|
+|"Nitrogen records":http://nitrogenproject.com/doc/elements.html|-|-|-|-|y|-|
+|\7.CONTAINER|
+|"EWGI":http://github.com/skarab/ewgi                         |-|-|y|-|-|-|
+|"SimpleBridge":http://github.com/rklophaus/SimpleBridge      |-|y|-|-|y|-|
+|"Webmachine":http://bitbucket.org/justin/webmachine/wiki/Home|-|-|-|-|-|y|
+|\7.SERVERS|
+|"Inets":http://www.erlang.org/doc/apps/inets/users_guide.html|-|-|y|-|y|-|
+|"Misultin":http://code.google.com/p/misultin/                |-|y|-|-|y|-|
+|"Mochiweb":http://code.google.com/p/mochiweb/                |y|y|-|-|y|y|
+|"Yaws":http://yaws.hyber.org/                                |-|-|y|y|y|-|
+
+
+h2. Maturity
+
+||_."BeepBeep":http://github.com/davebryson/beepbeep|_.Chicago Boss|_."Erlang Web":http://www.erlang-web.org/|_."ErlyWeb":http://www.erlyweb.org/|_."Nitrogen":http://nitrogenproject.com/|_."Zotonic":http://zotonic.com/|
+|\7.PROJECT|
+|# Code commits|"~30":http://github.com/davebryson/beepbeep/commits/master|"~200":http://github.com/evanmiller/ChicagoBoss/commits/master|"~300":http://bitbucket.org/etc/erlang-web/|"~200":http://github.com/yariv/erlyweb/commits/master|"~400":http://github.com/rklophaus/nitrogen/commits/master|"~2000":http://code.google.com/p/zotonic/|
+|# List subscribers|?|"~80":http://groups.google.com/group/chicagoboss|?|"~350":http://groups.google.com/group/erlyweb|"~400":http://groups.google.com/group/nitrogenweb|"~150":http://groups.google.com/group/zotonic-users|
+|Bug tracker?|no|"yes":/projects/chicagoboss/issues|"yes":http://sourceforge.net/tracker/?group_id=231549|"yes":http://code.google.com/p/erlyweb/issues/list|?|"yes":http://code.google.com/p/zotonic/issues/list|
+|\7.HISTORY|
+|First release |2009|2010|2008|2006|2008|2009|
+|Latest release|2009|2011|2009|2008|2010|2011|
+|Newest version|?   |[[Download|0.5.3]]|"1.4.1":http://www.erlang-web.org/download.html|"0.7.1":http://www.erlyweb.org/|"2.0.4":http://nitrogenproject.com/downloads|"0.7.0":http://zotonic.com/download|
