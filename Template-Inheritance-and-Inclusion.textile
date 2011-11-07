@@ -1,0 +1,74 @@
+h1. Template Inheritance and Inclusion
+
+All but the simplest web applications can benefit from re-using view logic. This page describes your options (some features require Chicago Boss 0.5 or later).
+
+h2. Template inheritance
+
+Templates can inherit from one another. The parent template should include a number of named placeholder blocks, like this:
+
+view/something/parent.html:
+
+<pre><code class="html_django">
+<html>
+  <title>{% block title %}title goes here...{% endblock %}</title>
+</html>
+</code></pre>
+
+Then the child template can extend the parent using the "extends" tag, and specify what to put in the named blocks, like so:
+
+<pre><code class="html_django">
+{% extends "view/something/parent.html" %}
+{% block title %}Welcome!{% endblock %}
+</code></pre>
+
+When the child template is rendered, the result will be:
+
+<pre><code class="html_django">
+<html>
+  <title>Welcome!</title>
+</html>
+</code></pre>
+
+The template language supports an arbitrary number of levels of inheritance. Child templates simply override the blocks of the parent templates, or use the blocks in the parent template if none is defined.
+
+h2. Including with context: <code>{% include %}</code> and <code>{% ssi ... parsed %}</code>
+
+To directly include a template from another template, the "include" tag can be useful. The "include" tag takes a string literal that says where the included template can be found
+
+<pre><code class="html_django">
+{% include "view/something/navigation.html" %}
+</code></pre>
+
+All of the variables remain in scope, and additional variables can be passed using the "with" keyword:
+
+<pre><code class="html_django">
+{% include "view/something/navigation.html" with admin=0 %}
+</code></pre>
+
+When used with the "parsed" keyword, the "ssi" tag behaves the same as "include", but it is not possible to pass variables. Example:
+
+<pre><code class="html_django">
+{% ssi "view/something/navigation.html" parsed %}
+</code></pre>
+
+Templates are included at compile-time, and their paths must be specified as a string literal.
+
+h2. Including without context: <code>{% include ... only %}</code>
+
+To include a template _without_ providing access to all the variables currently in scope, use the "only" keyword:
+
+<pre><code class="html_django">
+{% include "view/something/navigation.html" with user=user only %}
+</code></pre>
+
+Again, the path to the included template must be provided as a string literal.
+
+h2. Including without parsing: <code>{% ssi %}</code>
+
+Without the "parsed" keyword, the "ssi" tag can be used to directly include a file at run-time. As such, it can be passed a variable rather than a string literal. However, the included file is not evaluated as template code. Example:
+
+<pre><code class="html_django">
+{% with file_path="/path/to/some/file" %}
+    {% ssi file_path %}
+{% endwith %}
+</code></pre>
