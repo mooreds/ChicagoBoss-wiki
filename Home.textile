@@ -57,7 +57,7 @@ h3. Supports both SQL and schema-less databases
 * Riak (*NEW*)
 * Tokyo Tyrant
 * Mnesia
-* Or [[DB Adapter Quickstart|write your own adapter]] -- usually ~300 lines of code
+* Or [[DB Adapter Quickstart]] -- usually ~300 lines of code
 
 h3. Operational simplicity
 * Zero downtime code upgrades in production (*NEW*)
