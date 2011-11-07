@@ -1,0 +1,61 @@
+h1. Installation
+
+h2. Overview
+
+Chicago Boss generally won't be installed to your system (/usr/local etc.). All of the work occurs in user-land. You'll download a release, and then use it to generate projects.
+
+h2. Chicago Boss Requirements
+
+Install "Erlang R13A or later":http://www.erlang.org/download.html
+
+* Check with @erlang:system_info(otp_release)@.
+* On Windows Vista or Windows 7 -
+** you need install win openSSl (http://www.slproweb.com/products/Win32OpenSSL.html)
+** make mochiweb with msys or cygwin
+* On all windows 
+** Download and build rebar(http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html), then add it to your path and use it instead of the version included with ChicagoBoss.
+
+h2. Download a Chicago Boss Release
+
+"Download a release":http://www.chicagoboss.org/projects/chicagoboss/files
+
+h2. Compile It
+
+Build Chicago Boss with
+
+<pre><code>
+make
+</code></pre>
+
+h2. Generate A Project
+
+To create a project in the parent directory, simply type
+
+<pre><code>
+make app PROJECT=MyNewProject
+</code></pre>
+
+Then cruise over to it and start up the server:
+
+<pre><code>
+cd ../MyNewProject
+./start-dev.sh
+</code></pre>
+
+(On Windows, execute @start-dev.bat@ instead of @start-dev.sh@.)
+
+There will be a lot of PROGRESS REPORTs which look scary but hopefully everything is running smoothly. With this console you can interact directly with the running server. 
+
+h2. Enjoy
+
+Point your browser to http://localhost:8001/
+
+If all is well you will see "Hello, World!"
+
+Next steps:
+* Install the [[Admin Interface]]
+* [[Application Architecture]]
+* [[Example Application]]
+* [[Configuration]]
+* "Chicago Boss Tutorial":http://www.evanmiller.org/chicago-boss-guide.html
+* "Chicago Boss API docs":/embedded/chicagoboss/api.html
