@@ -1,7 +1,7 @@
 All configuration takes place in <code>boss.config</code> in your project directory. Valid configuration options are:
 
 * **assume_locale** - The presumed locale of translatable strings. Defaults to "en".
-* **base_url** - Sets the base_url passed to the views (for deployments on suburb's)
+* **base_url** - The base URL of the application. Defaults to "/".
 
 ## Cache
 
