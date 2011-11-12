@@ -28,6 +28,19 @@ All configuration takes place in <code>boss.config</code> in your project direct
 * **db_write_mode** and **db_read_mode** - Options specific to the [[MongoDB Adapter]]
 * **db_shards** - A list of proplists with per-shard database configuration. The proplists override the above options, and should contain an additional option: 
   * **db_shard_models** - A list of models (atoms) which are stored on the shard.
+    * Example:
+        <code><pre>{db_shards, [ 
+            [ 
+                {db_host, "localhost"}, 
+                {db_adapter, mysql}, 
+                {db_port, 3306}, 
+                {db_username, "dbuser"}, 
+                {db_password, "dbpass"}, 
+                {db_database, "database"},
+                {db_shard_id, shard_id_atom}, 
+                {db_shard_models, [model_atom_1, model_atom_2, model_atom_3, etc]} 
+            ] 
+        ]}</pre></code>
 
 ## Logging
 
