@@ -26,8 +26,9 @@ All configuration takes place in <code>boss.config</code> in your project direct
   * **riak** - Riak
   * **tyrant** - Tokyo Tyrant
 * **db_write_mode** and **db_read_mode** - Options specific to the [[MongoDB Adapter]]
-* **db_shards** - A list of proplists with per-shard database configuration. The proplists override the above options, and should contain an additional option: 
+* **db_shards** - A list of proplists with per-shard database configuration. The proplists override the above options, and should contain two additional options:
   * **db_shard_models** - A list of models (atoms) which are stored on the shard.
+  * **db_shard_id** - An atom used to identify the shard (required only for MySQL).
     * Example:
         <code><pre>{db_shards, [ 
             [ 
