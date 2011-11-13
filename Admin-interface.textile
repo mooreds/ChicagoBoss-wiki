@@ -4,7 +4,7 @@ To install it please follow these steps:
 
 <code> $ git clone https://github.com/evanmiller/chicagoboss_admin.git cb_admin </code>
 
- _The directory where you checkout the code needs to be called @cb_admin@ and nothing else._
+ _The directory where you checkout the code needs to be in the same directory that contains the Chicago Boss directory and should be called @cb_admin@._
 
 <pre>
 <code>$ cd cb_admin
