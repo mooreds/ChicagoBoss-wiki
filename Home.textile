@@ -6,6 +6,7 @@ h3. Develop
 * [[Installation]]
 * [[Configuration]]
 * [[Admin Interface]]
+* [[Useful Erlang Libraries]]
 * [[Upgrades]]
 * "API":http://chicagoboss.org/embedded/chicagoboss/api.html
 
