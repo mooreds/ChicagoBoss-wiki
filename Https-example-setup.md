@@ -1,5 +1,7 @@
 # Https example setup
 
+**Make sure you are using Erlang's latest release, namely R14B04 as the older versions's SSL OTP package has a memory leak** http://erlang.2086793.n4.nabble.com/SSL-cache-delete-bug-td3614886.html
+
 ## Make directory to hold the certificates
 <pre>
 mkdir ssl
