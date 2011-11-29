@@ -21,7 +21,7 @@ find(Conn, Id::string()) -> BossRecord | {error, Reason}
 Returns a BossRecord matching the Id. The Id must be unique across data types.
 
 <code class="erlang">
-find(Conn, Type::atom(), Conditions, Max::integer(), Skip::integer(), Sort::atom(), SortOrder) -> [BossRecord] 
+find(Conn, Type::atom(), Conditions, Max::integer() | all, Skip::integer(), Sort::atom(), SortOrder) -> [BossRecord] 
 </code>
 
 Queries for BossRecords. The Conditions are guaranteed to be in {Key, Operator, Value} format. See the BossDB API for a list of query operators you need to support.
