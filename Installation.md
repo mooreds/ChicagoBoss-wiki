@@ -1,10 +1,10 @@
-h1. Installation
+# Installation
 
-h2. Overview
+## Overview
 
 Chicago Boss generally won't be installed to your system (/usr/local etc.). All of the work occurs in user-land. You'll download a release, and then use it to generate projects.
 
-h2. Chicago Boss Requirements
+## Chicago Boss Requirements
 
 Install "Erlang R13A or later":http://www.erlang.org/download.html
 
@@ -15,11 +15,11 @@ Install "Erlang R13A or later":http://www.erlang.org/download.html
 * On all windows 
 ** Download and build rebar(http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html), then add it to your path and use it instead of the version included with ChicagoBoss.
 
-h2. Download a Chicago Boss Release
+## Download a Chicago Boss Release
 
 "Download a release":https://github.com/evanmiller/ChicagoBoss/downloads
 
-h2. Compile It
+## Compile It
 
 Build Chicago Boss with
 
@@ -27,7 +27,7 @@ Build Chicago Boss with
 make
 </code></pre>
 
-h2. Generate A Project
+## Generate A Project
 
 To create a project in the parent directory, simply type
 
@@ -46,7 +46,7 @@ cd ../my_new_project
 
 There will be a lot of PROGRESS REPORTs which look scary but hopefully everything is running smoothly. With this console you can interact directly with the running server. 
 
-h2. Enjoy
+## Enjoy
 
 Point your browser to http://localhost:8001/
 
