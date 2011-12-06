@@ -32,13 +32,13 @@ h2. Generate A Project
 To create a project in the parent directory, simply type
 
 <pre><code>
-make app PROJECT=MyNewProject
+make app PROJECT=my_new_project
 </code></pre>
 
-Then cruise over to it and start up the server:
+(Project names must start with a lowercase letter.) Then cruise over to it and start up the server:
 
 <pre><code>
-cd ../MyNewProject
+cd ../my_new_project
 ./start-dev.sh
 </code></pre>
 
@@ -50,7 +50,7 @@ h2. Enjoy
 
 Point your browser to http://localhost:8001/
 
-If all is well you will see "Hello, World!"
+If all is well you will see a forbidding error message about the requested template -- not to worry, the new project is empty so there is nothing to serve!
 
 Next steps:
 * Install the [[Admin Interface]]
