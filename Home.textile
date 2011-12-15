@@ -3,6 +3,7 @@ h2. Table of Contents
 * [[Roadmap]]
 
 h3. Develop
+* *"Chicago Boss: A Rough Introduction":http://evanmiller.org/chicago-boss-tutorial.pdf* (official tutorial)
 * [[Installation]]
 * [[Configuration]]
 * [[Admin Interface]]
