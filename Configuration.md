@@ -69,7 +69,7 @@ All configuration takes place in <code>boss.config</code> in your project direct
 * **port** - The port to run the server on. Defaults to 8001.
 * **server** - The HTTP server to use. Valid values are:
   * **mochiweb** - The [Mochiweb](http://code.google.com/p/mochiweb/) Web Server
-  * **misultin** - The [Misultin](http://code.google.com/p/misultin/) Web Server
+  * **misultin** - The [Misultin](https://github.com/ostinelli/misultin) Web Server
 
 ## Sessions
 
