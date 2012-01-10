@@ -7,25 +7,21 @@ The file contains a list of erlang terms, one per line finished with a dot.
 * boss.routes example
 
 <pre><code class="erlang">
-%% The {Controller, Action} pair to be used on the home page. Defaults to {"hello", "world"}
-%% Format: {"Controller", "Action"}
-{front_page, {"hello", "world"}}.
-%%
-%% The action to call if none is specified. Defaults to "index"
-%% Format: "Action" 
-{default_action, "index"}.
-%%
-%% A proplist of default actions to call if none is specified, keyed by controller name
-%% Format: [ {"Controller1", "Action"}, {"Controller2", "Action"}]
-{default_actions, [{"admin", "model"}]}.
-%%
-%% Route for not-found actions, is called if not named route is found a the first url token
-%% don't pertain to a controller
-%% Format: {"Controller", "Action", ["Param1", "ParamN"]}
-%% {not_found_route, {"hello", "world", []}}.
-%%
-%% Named routes, will take precedence over the previous
-%% Format: {"Full Url", {"Controller", "Action", ["Param1", "ParamN"]}}
-%%{"/login", {"account", "login", []}}.
-%%{"/signup", {"accounts", "signup", []}}.
+% Routes file.
+
+% Formats: 
+%     {"/some/route", [{controller, "Controller"}, {action, "Action"}]}.
+%     {"/some/route", [{controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%     {"/some/route", [{application, some_app}, {controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%     {404, [{controller, "Controller"}, {action, "Action"}]}.
+%     {404, [{controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%     {404, [{application, some_app}, {controller, "Controller"}, {action, "Action"}, {id, "42"}]}.
+%
+% Note that routing across applications results in a 302 redirect.
+
+% Front page
+% {"/", [{controller, "world"}, {action, "hello"}]}.
+
+% 404 File Not Found handler
+% {404, [{controller, "world"}, {action, "lost"}]}.
 </code></pre>
