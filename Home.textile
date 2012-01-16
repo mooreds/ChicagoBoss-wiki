@@ -4,6 +4,7 @@ h2. Table of Contents
 
 h3. Develop
 * *"Chicago Boss: A Rough Introduction":http://evanmiller.org/chicago-boss-tutorial.pdf* (official tutorial)
+* *NEW* "ChicagoBoss example application":http://www.rambocoder.com/?p=17  (unofficial tutorial)
 * [[Quickstart]]
 * [[Installation]]
 * [[Configuration]]
