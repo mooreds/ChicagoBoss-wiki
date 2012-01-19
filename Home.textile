@@ -14,7 +14,7 @@ h3. Develop
 * [[Admin Interface]]
 * [[Useful Erlang Libraries]]
 * [[Upgrades]]
-* "API":http://chicagoboss.org/embedded/chicagoboss/api.html
+* "API":http://chicagoboss.org/api.html
 
 
 h3. Deploy
