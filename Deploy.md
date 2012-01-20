@@ -2,7 +2,13 @@
 *Work in progress*
 
 ## Standalone server
-Chicago boss ships with their own high performance web server, it does not require Apache, Nginx, haproxy, ...
+Chicago boss ships with their own high performance web server, it does not require Apache, Nginx, haproxy.
+Currently these two web servers are supported:
+
+1. [Misultin](https://github.com/ostinelli/misultin) - Misultin (pronounced mee-sool-téen) is an Erlang library for building fast lightweight HTTP(S) servers, which also supports websockets.
+2. [Mochiweb](https://github.com/mochi/mochiweb) - MochiWeb is an Erlang library for building lightweight HTTP servers.
+
+Here's a comparison and some load tests with different web servers under Chicago Boss: [labs.evolope.com](http://labs.evolope.com)
 
 The default port is 8001 (see [[Configuration]] on how to change it), if you want to bind your application to the standard port 80 in unix you will need extra work, ports below 1024 can be opened only by root.
 
