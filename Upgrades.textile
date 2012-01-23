@@ -19,7 +19,7 @@ bc. make rebarize APPDIR=../my_app
 ../my_app rebar-boss-ified
 WARNING: your boss.config have not been changed, you need to set:
 - in boss app section:
----- {path, "/mnt/dev/tractis/t3/_github_cb_main"}
+---- {path, "/path/to/chicago_boss"}
 ---- {vm_cookie, "my_secret_cookie"} % Optional, defaults to abc123
 - for each app defined:
 ---- {path, "../path/to/app"}
