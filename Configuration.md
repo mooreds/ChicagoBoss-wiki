@@ -1,5 +1,6 @@
 All configuration takes place in <code>boss.config</code> in your project directory. Valid configuration options are:
 
+* **path** - Path to your chicago boss directory (root, not ebin)
 * **assume_locale** - The presumed locale of translatable strings. Defaults to "en".
 * **base_url** - The base URL of the application. Defaults to "/".
 
