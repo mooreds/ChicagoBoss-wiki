@@ -38,11 +38,11 @@ Boss has non-standard-compatible-rebar-way of compiling code, the rebar plugin s
 
 h3. Configuration
 
-Now the only file on a cb project you need to take care is boss.config, the new init.sh calls ./rebar boss commands that returns automatically generated erl -pa... commands and execute it.
+Now the only file on a cb project you need to take care is boss.config, the new init.sh calls ./rebar boss commands that returns automatically generated erl -pa... commands and executes it.
 
 You now defines the path in boss.config for each app and (compilation, test launch, start, stop, reload, ...) works automatically.
 
-A new setting in boss.config called vm_cookie (optional) has been added, used in start/reload commands (defaults to "abc123"):
+A new setting in boss.config called vm_cookie (optional) has been added, used in start/stop/reload commands (defaults to "abc123"):
 
 bc. [{boss, [ {path, "../ChicagoBoss"}, {vm_cookie, "abc123"}, ...
 
