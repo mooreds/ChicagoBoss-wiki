@@ -19,7 +19,7 @@ _Step 4._ Write an application. Put this into src/controller/rahm_greeting_contr
 
 _Step 5._ Start the development server
 
-    ./start-dev.sh
+    ./init-dev.sh
 
 _Step 6._ Try it out in a web browser: http://localhost:8001/greeting/hello
 
@@ -27,7 +27,7 @@ _Step 7._ Stop the development server
 
     q().
 
-_Step 8._ Write a conformance test. Put this into src/test/rahm_test.erl: 
+_Step 8._ Write a conformance test. Put this into src/test/functional/rahm_test.erl: 
 
     -module(rahm_test).
     -compile(export_all).
@@ -40,14 +40,18 @@ _Step 8._ Write a conformance test. Put this into src/test/rahm_test.erl:
 
 _Step 9._ Build for production and run the conformance test
 
-    make
-    make test
+    ./rebar compile
+    ./rebar boss c=test_functional
 
 Step 10. There is no step 10!
 
 Just kidding, you need to start the production server.
 
-    ./start.sh
+    ./init.sh start
+
+And if you need to stop it:
+
+    ./init.sh stop
 
 Now ask all your friends to visit your web page and try to get Rahm to stop saying hello.
 
