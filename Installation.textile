@@ -39,7 +39,7 @@ make app PROJECT=my_new_project
 
 <pre><code>
 cd ../my_new_project
-./start-dev.sh
+./init-dev.sh
 </code></pre>
 
 (On Windows, execute @start-dev.bat@ instead of @start-dev.sh@.)
