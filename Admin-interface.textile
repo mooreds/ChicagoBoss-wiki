@@ -19,6 +19,7 @@ Then add an entry for the cb_admin application in your project configuration fil
         ...
     ]},
     {cb_admin, [
+        {path, "/path/to/cb_admin"},
         {allow_ip_blocks, ["127.0.0.1"]},
         {base_url, "/admin"}
     ]}].
