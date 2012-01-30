@@ -6,6 +6,7 @@ h3. Tutorials
 * *"Chicago Boss: A Rough Introduction":http://evanmiller.org/chicago-boss-tutorial.pdf* (official tutorial)
 * *NEW* "ChicagoBoss example application":http://www.rambocoder.com/?p=17
 * *NEW* "Chicago Boss and Backbone.js":http://matthusby.posterous.com/94509638
+* *NEW* "Chicago Boss and Spine.js":http://sebastianhoitz.github.com/programming/2012/01/28/spinejs-and-chicago-boss/
 
 h3. Develop
 * [[Quickstart]]
