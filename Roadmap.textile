@@ -4,38 +4,27 @@ We hope the next major release of Chicago Boss will be 1.0, targeted for Autumn 
 
 h2. Goal 1: Full OTP compliance
 
-*Status*: _Not yet implemented_
+*Status*: _Everything implemented but .rel and .appup files._
 
-Apps written with Chicago Boss should be standalone OTP applications that simply list CB as a dependency. It will then be possible to write "turn-key" applications that end-users can easily download and deploy (e.g. a forum app, a wiki app, etc). In this sense, Chicago Boss should just be seen as a fancy compiler and run-time library for web applications.
+As of 0.6 apps written with Chicago Boss are standalone OTP applications that simply list CB as a dependency. Still remaining are to produce proper .appup and .rel files for doing application upgrades and downgrades.
 
-h2. Goal 2: News API (data model event notifications)
+h2. Goal 2: -News API (data model event notifications)-
 
-*Status*: _Implemented as of 0.5.4_
+*Status*: _Implemented as of 0.6_
 
-CB 1.0 will support event notifications for data models. That is, it will be easy to write code that sends a notification via email, Comet, or SMS as soon as something of interest in the database changes. Thus it will be simple to implement features like Twitter or Facebook News Feed, or to instantly email a site administrator whenever a new account is created.
+h2. Goal 3: -Distributed setups-
 
-The News API will have an external REST API so that other web applications can post model updates to CB and take advantage of Erlang's asynchronous I/O capabilities for delivering event notifications to clients.
+*Status*: _Implemented as of 0.6_
 
-The News API will be flexible and integrate tightly with BossMQ. For example, after receiving an event, the application can check to see if a particular user is online. If the user is online, the notification will be delivered to him via Comet; if he is not online, the notification will be delivered via email.
+h2. Goal 4: -Cache system-
 
-h2. Goal 3: Distributed setups
+*Status*: _Implemented as of 0.6_ 
 
-*Status*: _Implemented in trunk, needs testing_
+h2. Goal 5: Performance/scalability testing
 
-The following features currently only work on single-node setups:
+*Status*: _Not done_
 
-* ETS sessions
-* In-memory database
-* BossNews
-* BossMQ
-
-Work needs to be done to support these features in multi-node environments. By supporting multi-node environments out of the box, CB apps will have much simpler operational complexity than other frameworks (which might require separate Memcache and RabbitMQ servers that need to be configured). Ideally it will be possible to scale an application up to additional nodes with the click of a button in the admin interface.
-
-h2. Goal 4: Cache system
-
-*Status*: _Implemented in trunk, needs testing_ 
-
-See "Issue #1":/issues/1. Caching is an important part of any scaling strategy, and improves overall application responsiveness. ErlyDTL is fast, so the focus should be on caching the results of database queries rather than caching pages or view fragments. To keep the code simple, BossNews events should be used for expiring out-of-date cache entries. At a minimum we should support an in-memory cache as well as Memcache.
+A number of internal CB services (BossSession, BossCache, BossDB) use a single registered process and are a bottleneck under load. They need to be broken out to use worker pools, e.g. https://github.com/devinus/poolboy
 
 h2. Minor Features for CB 1.0
 
@@ -75,4 +64,4 @@ At present, services provided by the master node (message queue, in-memory sessi
 
 h2. UNIX signal handling
 
-The CB process should act as a regular UNIX daemon that handles UNIX signals. Changes to Erlang core will be required. The signal interface should be similar to Nginx, e.g. SIGHUP reloads config, SIGUSR1 reopens log files, SIGUSR2 upgrades code, etc.
+To overcome the perception that Erlang is "weird" the CB process should act as a regular UNIX daemon that handles UNIX signals. Patching the Erlang VM will be necessary, but hopefully Ericsson will like the idea. The CB signal interface should be similar to Nginx, e.g. SIGHUP reloads config, SIGUSR1 reopens log files, SIGUSR2 upgrades code, etc.
