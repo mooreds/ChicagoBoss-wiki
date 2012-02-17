@@ -66,6 +66,6 @@ When you're finished, just:
 # Put the adapter into boss_db/src/db_adapters
 # Specify the adapter name as the db_adapter in boss.config
 # Add any test configuration to boss_db/priv/test_db_config
-# Add a <pre><code>test_<adapter name></code></pre> target to the bottom of Makefile
-# Test the adapter by running make <pre><code>test_<adapter name></code></pre>
+# Add a <code>test_&lt;adapter name&gt;</code> target to the bottom of Makefile
+# Test the adapter by running <pre><code>make test_<adapter name></code></pre>
 # Send a note to the Chicago Boss mailing list
