@@ -63,9 +63,9 @@ save_record(Conn, RecordBossRecord) -> {ok, SavedBossRecord}
 Saves (that is, creates or updates) the given BossRecord in the database. If the ID is set to 'id', the function must generate an ID that is unique across data types. This function should not perform validation or run save hooks.
 
 When you're finished, just:
-# Put the adapter into SRC/boss/db_adapters
+# Put the adapter into boss_db/src/db_adapters
 # Specify the adapter name as the db_adapter in boss.config
-# Add any test configuration to SRC/boss/db_adapters/test_config
+# Add any test configuration to boss_db/priv/test_db_config
 # Add a test_<adapter name> target to the bottom of Makefile
 # Test the adapter by running make test_<adapter name> 
 # Send a note to the Chicago Boss mailing list
