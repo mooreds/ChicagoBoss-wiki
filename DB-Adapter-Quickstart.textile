@@ -1,18 +1,24 @@
 Want Chicago Boss to support your favorite database? Then write an adapter! This page explains how.
 
-Database adapters should conform to the boss_db_adapter behaviour and need to implement the following nine functions:
+Database adapters should conform to the boss_db_adapter behaviour and need to implement the following ten functions:
 
 <code class="erlang">
-start() -> {ok, Connection | undefined} 
+init(Options) -> ok
 </code>
 
-Performs any initialization and return a Connection value (if needed).
+Performs any adapter initialization.
+
+<code class="erlang">
+start(Options) -> {ok, Connection | undefined} 
+</code>
+
+Performs any connection initialization and return a Connection value (if needed).
 
 <code class="erlang">
 stop(Conn) -> ok
 </code>
 
-Performs any tear-downs.
+Performs any connection tear-downs.
 
 <code class="erlang">
 find(Conn, Id::string()) -> BossRecord | {error, Reason}
