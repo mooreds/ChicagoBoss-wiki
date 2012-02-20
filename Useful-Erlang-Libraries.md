@@ -6,4 +6,5 @@ The following Erlang libraries aren't included with Chicago Boss, but have been 
 * [ELDAP](/etnt/eldap) - for LDAP authentication
 * [erl_img](/evanmiller/erl_img) - for basic image manipulation
 * [jerome](/evanmiller/jerome) - for converting rich-text (Textile, HTML, RTF)
-* [meck](/eproxus/meck) - test mocking (compatible with eunit)
+* [meck](/eproxus/meck) - test mocking (compatible with unit)
+* [xmlrpc](/etnt/xmlrpc) - XMLRPC, easy to use
