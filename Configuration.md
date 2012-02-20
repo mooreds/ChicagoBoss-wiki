@@ -83,9 +83,10 @@ All configuration takes place in <code>boss.config</code> in your project direct
 * **session_exp_time**: Expiration time for the session cookie. Defaults to 525600 
 * **session_mnesia_nodes**: (optional, Mnesia sessions only) - List of Mnesia nodes, defaults to node()
 
-## Application
+## Templates
 
-* **smart_exceptions** - Enable [smart_exceptions](https://github.com/thomasl/smart_exceptions), which provide the line numbers of run-time errors. Defaults to **true** in development, **false** in production.
+* **template_tag_modules** - List of external modules to search for custom ErlyDTL tags.
+* **template_filter_modules** - List of external modules to search for custom ErlyDTL filters.
 
 ## Incoming Emails
 
