@@ -3,6 +3,8 @@ All configuration takes place in <code>boss.config</code> in your project direct
 * **path** - Path to your chicago boss directory (root, not ebin)
 * **assume_locale** - The presumed locale of translatable strings. Defaults to "en".
 * **base_url** - The base URL of the application. Defaults to "/".
+* **vm_cookie** - Cookie value to use in production. Must be the same for all nodes in the cluster.
+* **vm_name** - Node name to use in production. Must be unique for all nodes in the cluster. Defaults to &lt;application_name&gt;@&lt;host_name&gt;
 
 ## Cache
 
