@@ -1,7 +1,7 @@
 An admin interface for ChicagoBoss is available as a separate application.
 
 To install it please follow these steps:
-
+https://github.com/evanmiller/cb_admin
 <code> $ git clone https://github.com/evanmiller/cb_admin.git</code>
 
  _The directory where you checkout the code needs to be in the same directory that contains the Chicago Boss directory and should be called @cb_admin@._
