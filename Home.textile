@@ -7,6 +7,7 @@ h3. Tutorials
 * *NEW* "ChicagoBoss example application":http://www.rambocoder.com/?p=17
 * *NEW* "Chicago Boss and Backbone.js":http://matthusby.posterous.com/94509638
 * *NEW* "Chicago Boss and Spine.js":http://sebastianhoitz.github.com/programming/2012/01/28/spinejs-and-chicago-boss/
+* "ErlChat simple chat server":http://zianet.dk/blog/2011/12/13/erlchat-a-simple-chat-server-written-in-chicago-boss-a-web-framework-for-erlang/
 
 h3. Develop
 * [[Quickstart]]
