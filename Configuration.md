@@ -1,8 +1,14 @@
-All configuration takes place in <code>boss.config</code> in your project directory. Valid configuration options are:
+All configuration takes place in <code>boss.config</code> in your project directory. The following options go in your application's config stanza:
 
+* **path** - Path to your application directory (root, not ebin)
+* **base_url** - The base URL of the application. Defaults to "/".
+* **domains** - A list of domains that this application will serve. Defaults to <code>all</code>
+
+The rest of the configuration options go in the <code>boss</code> config stanza. These include:
+
+* **applications** - A list of CB applications started by this server
 * **path** - Path to your chicago boss directory (root, not ebin)
 * **assume_locale** - The presumed locale of translatable strings. Defaults to "en".
-* **base_url** - The base URL of the application. Defaults to "/".
 * **vm_cookie** - Cookie value to use in production. Must be the same for all nodes in the cluster.
 * **vm_name** - Node name to use in production. Must be unique for all nodes in the cluster. Defaults to &lt;application_name&gt;@&lt;host_name&gt;
 
