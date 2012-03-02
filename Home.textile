@@ -12,6 +12,7 @@ h3. Tutorials
 h3. Develop
 * [[Quickstart]]
 * [[Installation]]
+* [[Windows Instructions]]
 * [[Configuration]]
 * [[Admin Interface]]
 * [[Useful Erlang Libraries]]
