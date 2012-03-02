@@ -17,6 +17,7 @@ h3. Develop
 * [[Admin Interface]]
 * [[Useful Erlang Libraries]]
 * [[Upgrades]]
+* [[Windows instructions]]
 * "API":http://chicagoboss.org/api.html
 
 
