@@ -23,9 +23,17 @@ h2. Compile It
 
 Build Chicago Boss with
 
-<pre><code>
-make
-</code></pre>
+<pre>make</pre>
+
+h2. Generate API docs
+
+To generate the latest documentation of API calls localy:
+<pre>cd /path/to/ChicagoBoss-x.y.z
+make edoc
+cd doc/
+</pre>
+
+You should see api.html, api-controller.html, etc 
 
 h2. Generate A Project
 
