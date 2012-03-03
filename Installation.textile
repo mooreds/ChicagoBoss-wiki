@@ -58,4 +58,4 @@ Next steps:
 * [[Example Application]]
 * [[Configuration]]
 * [[An Evening With Chicago Boss]]
-* "Chicago Boss API docs":/embedded/chicagoboss/api.html
+* "Chicago Boss API docs":http://www.chicagoboss.org/api.html
