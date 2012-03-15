@@ -11,6 +11,7 @@ The rest of the configuration options go in the <code>boss</code> config stanza.
 * **assume_locale** - The presumed locale of translatable strings. Defaults to "en".
 * **vm_cookie** - Cookie value to use in production. Must be the same for all nodes in the cluster.
 * **vm_name** - Node name to use in production. Must be unique for all nodes in the cluster. Defaults to &lt;application_name&gt;@&lt;host_name&gt;
+* **vm_max_processes** - The largest number of processes that the VM is allowed to spawn. Defaults to 134217727 (the highest possible value).
 
 ## Cache
 
