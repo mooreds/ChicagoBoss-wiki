@@ -10,7 +10,7 @@ Install "Erlang R13A or later":http://www.erlang.org/download.html
 
 * Check with @erlang:system_info(otp_release)@.
 * On Windows Vista or Windows 7 -
-** you need install win openSSl (http://www.slproweb.com/products/Win32OpenSSL.html)
+** you need install win openSSL (http://www.slproweb.com/products/Win32OpenSSL.html)
 ** make mochiweb with msys or cygwin
 * On all windows 
 ** Download and build rebar(http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html), then add it to your path and use it instead of the version included with ChicagoBoss.
